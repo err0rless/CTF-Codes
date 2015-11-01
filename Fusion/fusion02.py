@@ -1,4 +1,4 @@
-# exploit-ex fusion level01
+# exploit-ex fusion level02
 from err0rless import connst, dump
 from struct import pack
 
